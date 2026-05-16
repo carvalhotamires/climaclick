@@ -1,75 +1,116 @@
-# React + TypeScript + Vite
+# ClimaClick 🌦️ (Clima Dashboard)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicação web em **React + TypeScript + Vite** que permite buscar cidades e visualizar previsão do tempo usando a **Open‑Meteo** (sem necessidade de API key).  
+Inclui **favoritos** com persistência local, **rotas**, **componentização**, **consumo de API**, e tratamento de **loading/erro/empty state**.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 👥 Integrantes
+- Bruno Guimarães Alves
+- Lanusse Helena de Almeida Silveira
+- Lucivânia Ramiro de Araújo
+- Messias da Silva Guedes
+- Tamires Carvalho da Silva
 
-## React Compiler
+---
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+## ✅ Requisitos atendidos (check rápido)
+- **Componentização:** componentes reutilizáveis com props + biblioteca de UI
+- **Rotas:** Home / Detalhes / Favoritos / Sobre
+- **Hooks:** useState / useEffect (e hooks utilitários se houver)
+- **Consumo de API:** Open‑Meteo (Geocoding + Forecast)
+- **Tratamento de estados:** loading, erro e dados inexistentes
+- **Organização do projeto:** pastas pages/, components/, services/, hooks/, types/
+- **UI/UX:** layout consistente e responsivo, sem erros no console
 
-Note: This will impact Vite dev & build performances.
+---
 
-## Expanding the ESLint configuration
+## 🧩 Funcionalidades
+- Busca de cidades (Geocoding)
+- Exibição do clima atual e previsão
+- Tela de detalhes com informações avançadas
+- Favoritar/desfavoritar cidades (persistência no navegador)
+- Estados de loading, erro e “nenhum resultado”
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🗺️ Rotas da aplicação
+- `/` — Home
+- `/city/:idOuNome` — Detalhes
+- `/favorites` — Favoritos
+- `/about` — Sobre
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 🌐 APIs utilizadas
+- **Open‑Meteo Geocoding API:** converte nome da cidade → latitude/longitude
+- **Open‑Meteo Forecast API:** retorna clima atual + previsão (hourly/daily)
+
+> Observação: a Open‑Meteo não exige API_KEY, facilitando testes do professor.
+
+---
+
+## 🧱 Tecnologias
+- React + TypeScript
+- Vite
+- React Router DOM
+- Biblioteca de UI: (MUI / Chakra / Ant Design)  <-- preencher
+- Requisições HTTP: fetch ou axios  <-- preencher
+- (Opcional) Gráficos: (Recharts / Chart.js etc.) <-- se usarem
+
+---
+
+## 📁 Estrutura de pastas (exemplo)
+src/
+- components/
+- pages/
+- routes/
+- services/
+- hooks/
+- types/
+- utils/
+
+---
+
+## ▶️ Como rodar o projeto
+### Pré-requisitos
+- Node.js (versão LTS recomendada)
+- npm ou yarn
+
+### Instalação
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Rodar em desenvolvimento
+```bash
+npm run dev
 ```
+
+### Build de produção
+```bash
+npm run build
+npm run preview
+```
+
+---
+
+## 🧪 Qualidade / QA (o que foi verificado)
+- Sem erros no console
+- Rotas navegando corretamente
+- Loading e erro tratados nas requisições
+- Responsivo (mobile/desktop)
+- Favoritos persistem após recarregar a página
+
+---
+
+## 📌 Decisões técnicas (para a apresentação)
+- Escolha da Open‑Meteo por ser **sem API key** e adequada para fins educacionais
+- Separação em services/ para isolar regras de consumo de API
+- Componentes reutilizáveis para manter consistência visual e reduzir repetição.
+
+---
+
+## 📄 Licença
+
+Projeto desenvolvido para fins acadêmicos.
