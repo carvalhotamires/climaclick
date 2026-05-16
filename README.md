@@ -62,13 +62,13 @@ Inclui **favoritos** com persistência local, **rotas**, **componentização**, 
 
 ## 📁 Estrutura de pastas (exemplo)
 src/
+- assets/
 - components/
-- pages/
-- routes/
-- services/
+- context/
 - hooks/
-- types/
-- utils/
+- pages/
+- services/
+- theme/
 
 ---
 
