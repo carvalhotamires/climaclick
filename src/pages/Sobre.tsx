@@ -67,8 +67,8 @@ export default function Sobre() {
           <Stack
             direction="row"
             spacing={2}
-            flexWrap="wrap"
             useFlexGap
+            sx={{ flexWrap: "wrap" }}
           >
             <Chip label="React" />
             <Chip label="TypeScript" />

@@ -75,21 +75,22 @@ const Home: React.FC = () => {
                 color: 'white', 
                 backgroundColor: 'rgba(255, 255, 255, 0.05)', // Fundo sutil para destaque
                 '& fieldset': {
-                  borderColor: 'rgba(255, 255, 255, 0.3)', // Borda visível no escuro
+                  borderColor: 'divider', // Borda visível no escuro
                 },
                 '&:hover fieldset': {
-                  borderColor: 'rgba(255, 255, 255, 0.5)', // Borda ao passar o mouse
+                  borderColor: 'text.secondary', // Borda ao passar o mouse
                 },
                 '&.Mui-focused fieldset': {
-                  borderColor: '#90caf9', // Cor de destaque ao clicar (azul claro)
+                  borderColor: 'primary.main', // Cor de destaque ao clicar (azul claro)
+                  borderWidth: 2, // Borda mais grossa ao focar
                 },
               },
               // Estilo do rótulo (label)
               '& .MuiInputLabel-root': {
-                color: 'rgba(255, 255, 255, 0.7)',
+                color: 'text.secondary', // Cor do label
               },
               '& .MuiInputLabel-root.Mui-focused': {
-                color: '#90caf9',
+                color: 'primary.main',
               },
             }}
             slotProps={{
