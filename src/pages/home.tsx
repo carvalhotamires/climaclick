@@ -20,11 +20,10 @@ import {
 import {useCitySearch,useWeather} from '../hooks/useWeather';
 import WeatherCard from '../components/common/WeatherCard';
 
-// Importando as funções da sua API (Certifique-se de adicionar 'export' nelas no api.ts)
-import { weatherCodeLabel, weatherCodeIcon } from '../services/api'; // Importando os helpers que já criamos
+import { weatherCodeLabel, weatherCodeIcon } from '../services/api'; 
 
 const Home: React.FC = () => {
-  // Busca de cidades
+  
   const {
     query,
     setQuery,
@@ -33,7 +32,6 @@ const Home: React.FC = () => {
     error,
   } = useCitySearch();
 
-  // Dados do clima
   const {
     weather,
     city,
@@ -44,7 +42,6 @@ const Home: React.FC = () => {
   return (
     <Container maxWidth="lg" sx={{ py: { xs: 3, md: 6 }, px: { xs: 2, sm: 3 } }}>
 
-      {/* Título com ajuste de fonte para telas pequenas (320px) */}
       <Typography variant="h3"
         component="h1"
         sx={{ 
@@ -60,7 +57,6 @@ const Home: React.FC = () => {
 
       <Grid container spacing={3} sx={{ justifyContent: 'center' }}>
 
-        {/* Campo de Busca: ocupa 100% no mobile e metade no desktop */}
         <Grid size={{ xs: 12, md: 6 }}>
           <TextField
             fullWidth
@@ -70,24 +66,24 @@ const Home: React.FC = () => {
             onChange={(e) => setQuery(e.target.value)}
             disabled={isLoading}
             sx={{
-              // Estilo da cor do texto digitado
+             
               '& .MuiOutlinedInput-root': {
                 color: 'white', 
-                backgroundColor: 'rgba(255, 255, 255, 0.05)', // Fundo sutil para destaque
+                backgroundColor: 'rgba(255, 255, 255, 0.05)', 
                 '& fieldset': {
-                  borderColor: 'divider', // Borda visível no escuro
+                  borderColor: 'divider', 
                 },
                 '&:hover fieldset': {
-                  borderColor: 'text.secondary', // Borda ao passar o mouse
+                  borderColor: 'text.secondary', 
                 },
                 '&.Mui-focused fieldset': {
-                  borderColor: 'primary.main', // Cor de destaque ao clicar (azul claro)
-                  borderWidth: 2, // Borda mais grossa ao focar
+                  borderColor: 'primary.main', 
+                  borderWidth: 2, 
                 },
               },
-              // Estilo do rótulo (label)
+              
               '& .MuiInputLabel-root': {
-                color: 'text.secondary', // Cor do label
+                color: 'text.secondary', 
               },
               '& .MuiInputLabel-root.Mui-focused': {
                 color: 'primary.main',
@@ -104,19 +100,16 @@ const Home: React.FC = () => {
             }}
           />
 
-          {/* Loading da busca */}
           {isSearching && (
             <Typography sx={{ mt: 1 }}>Buscando cidades...</Typography>
           )}
 
-          {/* Alerta Erro responsivo */}
           {error && (
             <Alert severity="error" sx={{ mt: 2, width: '100%' }}>
               Cidade não encontrada. Tente novamente!
           </Alert>
       )}
 
-          {/* Lista de sugestões com scroll interno */}
           {suggestions.length > 0 && (
             <Paper elevation={3} sx={{ mt: 1, maxHeight: 250, overflow: 'auto' }}>
               <List>
@@ -135,7 +128,6 @@ const Home: React.FC = () => {
           )}
         </Grid>
 
-        {/* Exibição do Card: Centralizado e fluido */}
         <Grid size={{ xs: 12, md: 8 }}>
           {isLoading ? (
             <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', mt: 4 }}>
