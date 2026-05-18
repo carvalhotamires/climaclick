@@ -49,7 +49,7 @@ export function useWeatherDetails(cityName: string | null) {
   const fetchDetails = useCallback(async (city: string) => {
     dispatch({ type: 'FETCH_START' });
     try {
-      const API_KEY = 'CHAVE_API'; // ATENTAR PARA COLOCAR SUA CHAVE DE API AQUI
+      const API_KEY = 'CHAVE_API';
       const res = await fetch(
         `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}&units=metric&lang=pt_br`
       );

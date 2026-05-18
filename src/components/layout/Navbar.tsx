@@ -17,18 +17,18 @@ export default function Navbar() {
       disableGutters
         sx={{
           display: "flex",
-          // No mobile (xs) fica em coluna, no tablet (sm) em diante volta a ser linha
+        
           flexDirection: { xs: "column", sm: "row" },
           justifyContent: "space-between",
           alignItems: "center",
-          py: { xs: 1.5, sm: 0 }, // Padding vertical no mobile
-          gap: { xs: 1, sm: 0 }  // Espaço entre título e botões no mobile
+          py: { xs: 1.5, sm: 0 }, 
+          gap: { xs: 1, sm: 0 }  
         }}
       >
         <Typography variant="h6"
         component="div"
         sx={{ fontWeight: "bold",
-              fontSize: { xs: "1.1rem", sm: "1.25rem" }, // Fonte menor no 320px/375px
+              fontSize: { xs: "1.1rem", sm: "1.25rem" }, 
               textAlign: "center"}} >
           Clima Dashboard
         </Typography>
@@ -36,7 +36,7 @@ export default function Navbar() {
         <Box 
             sx={{ 
               display: "flex", 
-              flexWrap: "wrap", // Garante que os botões não estourem se a tela for minúscula
+              flexWrap: "wrap", 
               justifyContent: "center",
               gap: { xs: 0.5, sm: 1 } 
             }}

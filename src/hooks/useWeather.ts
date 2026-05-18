@@ -1,7 +1,3 @@
-// =============================================================
-//  src/hooks/useWeather.ts  –  Custom hooks de dados climáticos
-// =============================================================
-
 import { useState, useEffect, useCallback, useRef } from "react";
 import {
   searchCities,
@@ -11,8 +7,6 @@ import {
   type WeatherApiError,
 } from "../services/api";
 
-// ─── useWeather ────────────────────────────────────────────────
-// Carrega e gerencia os dados climáticos de uma cidade selecionada.
 
 interface UseWeatherReturn {
   weather: WeatherData | null;
@@ -47,20 +41,19 @@ export function useWeather(defaultCity?: GeocodingResult): UseWeatherReturn {
     }
   }, []);
 
-  // Carrega dados iniciais se uma cidade padrão for fornecida
+  
   useEffect(() => {
     if (defaultCity) {
       loadWeather(defaultCity);
     }
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, []); 
 
   const clearError = useCallback(() => setError(null), []);
 
   return { weather, city, isLoading, error, loadWeather, clearError };
 }
 
-// ─── useCitySearch ─────────────────────────────────────────────
-// Gerencia a busca de cidades com debounce automático.
+
 
 interface UseCitySearchReturn {
   query: string;
