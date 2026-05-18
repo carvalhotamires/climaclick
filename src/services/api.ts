@@ -1,9 +1,3 @@
-// =============================================================
-//  services/api.ts  –  Open-Meteo + Geocoding API integration
-// =============================================================
-
-// ─── Types ────────────────────────────────────────────────────
-
 export interface GeocodingResult {
   id: number;
   name: string;
@@ -11,7 +5,7 @@ export interface GeocodingResult {
   longitude: number;
   country: string;
   country_code: string;
-  admin1?: string; // state / province
+  admin1?: string; 
   timezone: string;
   population?: number;
 }
@@ -65,8 +59,6 @@ export interface WeatherApiError {
   details?: string;
 }
 
-// ─── Constants ────────────────────────────────────────────────
-
 const GEOCODING_BASE = "https://geocoding-api.open-meteo.com/v1";
 const WEATHER_BASE   = "https://api.open-meteo.com/v1";
 
@@ -102,11 +94,7 @@ const DAILY_FIELDS = [
   "uv_index_max",
 ].join(",");
 
-// ─── Internal helpers ─────────────────────────────────────────
 
-/**
- * Wraps fetch with a timeout and normalises errors into WeatherApiError.
- */
 async function safeFetch(url: string, timeoutMs = 8000): Promise<Response> {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), timeoutMs);
@@ -131,16 +119,6 @@ async function safeFetch(url: string, timeoutMs = 8000): Promise<Response> {
   }
 }
 
-// ─── Public API functions ──────────────────────────────────────
-
-/**
- * Searches cities by name using the Open-Meteo Geocoding API.
- *
- * @param cityName  - The city name typed by the user.
- * @param language  - Language for result names (default: "pt" for Portuguese).
- * @param count     - Maximum number of results (default: 5).
- * @returns         Array of GeocodingResult or throws WeatherApiError.
- */
 export async function searchCities(
   cityName: string,
   language = "pt",
@@ -191,14 +169,6 @@ export async function searchCities(
   return data.results as GeocodingResult[];
 }
 
-/**
- * Fetches full weather data (current + hourly + daily) for given coordinates.
- *
- * @param latitude   - Latitude of the location.
- * @param longitude  - Longitude of the location.
- * @param timezone   - IANA timezone string (e.g. "America/Fortaleza").
- * @returns          WeatherData or throws WeatherApiError.
- */
 export async function fetchWeather(
   latitude: number,
   longitude: number,
@@ -228,7 +198,6 @@ export async function fetchWeather(
 
   const data = await res.json();
 
-  // Open-Meteo returns a 200 with an "error" field on bad params
   if (data.error) {
     throw {
       type: "api_error",
@@ -247,10 +216,6 @@ export async function fetchWeather(
   };
 }
 
-/**
- * Convenience: search for the first matching city and immediately
- * return its weather. Useful for quick "search + load" flows.
- */
 export async function fetchWeatherByCity(cityName: string): Promise<{
   city: GeocodingResult;
   weather: WeatherData;
@@ -261,9 +226,6 @@ export async function fetchWeatherByCity(cityName: string): Promise<{
   return { city, weather };
 }
 
-// ─── Weather code helpers ──────────────────────────────────────
-
-/** Maps WMO weather interpretation codes to human-readable Portuguese labels. */
 export function weatherCodeLabel(code: number): string {
   const map: Record<number, string> = {
     0: "Céu limpo", 1: "Predominantemente limpo", 2: "Parcialmente nublado",
@@ -280,7 +242,6 @@ export function weatherCodeLabel(code: number): string {
   return map[code] ?? "Condição desconhecida";
 }
 
-/** Returns an emoji icon for a given WMO weather code. */
 export function weatherCodeIcon(code: number, isDay = true): string {
   if (code === 0) return isDay ? "☀️" : "🌙";
   if (code <= 2) return isDay ? "🌤️" : "🌙";
