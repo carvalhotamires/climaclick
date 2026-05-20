@@ -34,19 +34,12 @@ export function FavoritesProvider({
   children: React.ReactNode;
 }) {
   const [favorites, setFavorites] =
-    useState<FavoriteCity[]>([]);
+    useState<FavoriteCity[]>(() => {
+    const saved = localStorage.getItem("favorites");
+    return saved ? JSON.parse(saved) : [];
+  });
 
-  useEffect(() => {
-    const saved =
-      localStorage.getItem(
-        "favorites"
-      );
-
-    if (saved) {
-      setFavorites(JSON.parse(saved));
-    }
-  }, []);
-
+  
   useEffect(() => {
     localStorage.setItem(
       "favorites",
