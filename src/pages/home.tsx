@@ -68,8 +68,8 @@ const Home: React.FC = () => {
             sx={{
              
               '& .MuiOutlinedInput-root': {
-                color: 'white', 
-                backgroundColor: 'rgba(255, 255, 255, 0.05)', 
+                color: 'black', 
+                backgroundColor: 'rgba(255, 255, 255, 0.1)', 
                 '& fieldset': {
                   borderColor: 'divider', 
                 },
