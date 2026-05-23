@@ -1,5 +1,7 @@
 import { useReducer, useEffect, useCallback } from 'react';
 
+import { fetchWeatherByCity, weatherCodeLabel, weatherCodeIcon } from '../services/api'; 
+
 export interface HourlyForecast {
   time: string;
   temp: number;
@@ -49,32 +51,41 @@ export function useWeatherDetails(cityName: string | null) {
   const fetchDetails = useCallback(async (city: string) => {
     dispatch({ type: 'FETCH_START' });
     try {
-      const API_KEY = 'CHAVE_API';
-      const res = await fetch(
-        `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}&units=metric&lang=pt_br`
-      );
-      if (!res.ok) throw new Error('Cidade não encontrada');
-      const json = await res.json();
+      
+      const { city: cityData, weather } = await fetchWeatherByCity(city);
 
+     
+      const hourlyForecast: HourlyForecast[] = [];
+      
+    
+      for (let i = 0; i < 8; i++) {
+        const timeString = new Date(weather.hourly.time[i]).toLocaleTimeString('pt-BR', {
+          hour: '2-digit',
+          minute: '2-digit',
+        });
+
+        hourlyForecast.push({
+          time: timeString,
+          temp: Math.round(weather.hourly.temperature_2m[i]),
+         
+          icon: weatherCodeIcon(weather.hourly.weather_code[i]),
+          description: weatherCodeLabel(weather.hourly.weather_code[i]),
+        });
+      }
+
+      
       const details: WeatherDetails = {
-        city: json.city.name,
-        humidity: json.list[0].main.humidity,
-        windSpeed: json.list[0].wind.speed,
-        feelsLike: json.list[0].main.feels_like,
-        hourlyForecast: json.list.slice(0, 8).map((item: any) => ({
-          time: new Date(item.dt * 1000).toLocaleTimeString('pt-BR', {
-            hour: '2-digit',
-            minute: '2-digit',
-          }),
-          temp: Math.round(item.main.temp),
-          icon: item.weather[0].icon,
-          description: item.weather[0].description,
-        })),
+        city: cityData.name,
+        humidity: weather.current.relative_humidity_2m,
+        windSpeed: weather.current.wind_speed_10m,
+        feelsLike: Math.round(weather.current.apparent_temperature),
+        hourlyForecast: hourlyForecast,
       };
 
       dispatch({ type: 'FETCH_SUCCESS', payload: details });
     } catch (err: any) {
-      dispatch({ type: 'FETCH_ERROR', payload: err.message });
+    
+      dispatch({ type: 'FETCH_ERROR', payload: err.message || "Erro desconhecido ao buscar detalhes." });
     }
   }, []);
 
