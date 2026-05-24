@@ -3,6 +3,11 @@
 Aplicação web em **React + TypeScript + Vite** que permite buscar cidades e visualizar previsão do tempo usando a **Open‑Meteo** (sem necessidade de API key).  
 Inclui **favoritos** com persistência local, **rotas**, **componentização**, **consumo de API**, e tratamento de **loading/erro/empty state**.
 
+## 🌐 Deploy Online
+O deploy foi realizado na plataforma Vercel. Você pode testar a aplicação completa acessando o link abaixo:
+
+🔗 **[Acessar o Clima Click](https://seu-link-aqui.vercel.app)**
+
 ---
 
 ## 👥 Integrantes
