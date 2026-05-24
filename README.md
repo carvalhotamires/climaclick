@@ -6,7 +6,7 @@ Inclui **favoritos** com persistência local, **rotas**, **componentização**, 
 ## 🌐 Deploy Online
 O deploy foi realizado na plataforma Vercel. Você pode testar a aplicação completa acessando o link abaixo:
 
-🔗 **[Acessar o Clima Click](https://seu-link-aqui.vercel.app)**
+🔗 **[Acessar o Clima Click](https://climaclick.vercel.app/)**
 
 ---
 
