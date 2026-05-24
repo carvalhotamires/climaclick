@@ -9,7 +9,6 @@ import MainLayout from './components/layout/MainLayout';
 import Home from './pages/home';
 import Sobre from './pages/Sobre';
 import Favoritos from './pages/Favoritos';
-import Detalhes from './pages/Detalhes';
 
 function App() {
   return (
@@ -19,7 +18,6 @@ function App() {
           <Route index element={<Home />} />
           <Route path="sobre" element={<Sobre />} />
           <Route path="favoritos" element={<Favoritos />} />
-          <Route path="detalhes" element={<Detalhes />} />
         </Route>
       </Routes>
     </BrowserRouter>
