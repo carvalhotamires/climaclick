@@ -25,6 +25,9 @@ export default function Favoritos() {
             sx={{
               borderRadius: 3,
               boxShadow: 3,
+              backgroundColor: 'var(--code-bg)',
+              color: 'var(--text-h)',
+              border: '1px solid var(--border)',
             }}
           >
             <CardContent>

@@ -21,6 +21,9 @@ export default function Sobre() {
           borderRadius: 4,
           boxShadow: 4,
           p: 2,
+          backgroundColor: 'var(--code-bg)',
+          color: 'var(--text-h)',
+          border: '1px solid var(--border)',
         }}
       >
         <CardContent>
@@ -66,16 +69,48 @@ export default function Sobre() {
 
           <Stack
             direction="row"
-            spacing={2}
-            useFlexGap
-            sx={{ flexWrap: "wrap" }}
+            sx={{ 
+              flexWrap: "wrap", 
+              justifyContent: "center",
+              gap: 2
+            }}
           >
-            <Chip label="React" />
-            <Chip label="TypeScript" />
-            <Chip label="Material UI" />
-            <Chip label="React Router DOM" />
-            <Chip label="Context API" />
-            <Chip label="Open-Meteo API" />
+            <Chip label="React"
+              sx={{ 
+                backgroundColor: 'var(--accent-bg)', 
+                color: 'var(--text-h)', 
+                border: '1px solid var(--accent-border)' 
+              }} />
+            <Chip label="TypeScript" 
+              sx={{ 
+                backgroundColor: 'var(--accent-bg)', 
+                color: 'var(--text-h)', 
+                border: '1px solid var(--accent-border)' 
+              }} />
+            <Chip label="Material UI" 
+              sx={{ 
+                backgroundColor: 'var(--accent-bg)', 
+                color: 'var(--text-h)', 
+                border: '1px solid var(--accent-border)' 
+              }} />
+            <Chip label="React Router DOM" 
+              sx={{ 
+                backgroundColor: 'var(--accent-bg)', 
+                color: 'var(--text-h)', 
+                border: '1px solid var(--accent-border)' 
+              }} />
+            <Chip label="Context API" 
+              sx={{ 
+                backgroundColor: 'var(--accent-bg)', 
+                color: 'var(--text-h)', 
+                border: '1px solid var(--accent-border)' 
+              }} />
+            <Chip label="Open-Meteo API" 
+              sx={{ 
+                backgroundColor: 'var(--accent-bg)', 
+                color: 'var(--text-h)', 
+                border: '1px solid var(--accent-border)' 
+              }} />
           </Stack>
         </CardContent>
       </Card>

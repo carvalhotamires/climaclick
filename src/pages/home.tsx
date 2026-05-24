@@ -22,8 +22,11 @@ import WeatherCard from '../components/common/WeatherCard';
 
 import { weatherCodeLabel, weatherCodeIcon } from '../services/api'; 
 
+import { useTheme } from '@mui/material/styles';
+
 const Home: React.FC = () => {
-  
+  const theme = useTheme();
+
   const {
     query,
     setQuery,
@@ -66,34 +69,36 @@ const Home: React.FC = () => {
             onChange={(e) => setQuery(e.target.value)}
             disabled={isLoading}
             sx={{
-             
+              '& .MuiInputBase-input': {
+                color: 'var(--text-h)', 
+              },
+              
               '& .MuiOutlinedInput-root': {
-                color: 'black', 
                 backgroundColor: 'rgba(255, 255, 255, 0.1)', 
                 '& fieldset': {
-                  borderColor: 'divider', 
+                  borderColor: 'var(--border)', 
                 },
                 '&:hover fieldset': {
-                  borderColor: 'text.secondary', 
+                  borderColor: 'var(--text)', 
                 },
                 '&.Mui-focused fieldset': {
-                  borderColor: 'primary.main', 
+                  borderColor: 'var(--accent)',
                   borderWidth: 2, 
                 },
               },
               
               '& .MuiInputLabel-root': {
-                color: 'text.secondary', 
+                color: 'var(--text)', 
               },
               '& .MuiInputLabel-root.Mui-focused': {
-                color: 'primary.main',
+                color: 'var(--accent)',
               },
             }}
             slotProps={{
               input: {
                 endAdornment: isSearching && (
                   <InputAdornment position="end">
-                    <CircularProgress size={20} sx={{ color: '#90caf9' }} />
+                    <CircularProgress size={20} sx={{ color: 'var(--accent)' }} />
                   </InputAdornment>
                 ),
               },
@@ -111,14 +116,29 @@ const Home: React.FC = () => {
       )}
 
           {suggestions.length > 0 && (
-            <Paper elevation={3} sx={{ mt: 1, maxHeight: 250, overflow: 'auto' }}>
+            <Paper elevation={3} sx={{ mt: 1, maxHeight: 250, overflow: 'auto', backgroundColor: 'var(--bg)', border: '1px solid var(--border)', }}>
               <List>
                 {suggestions.map((cidade) => (
                   <ListItem key={cidade.id} disablePadding>
-                    <ListItemButton onClick={() => loadWeather(cidade)}>
+                    <ListItemButton onClick={() => loadWeather(cidade)}
+                      sx={{
+                        '&:hover': {
+                          backgroundColor: 'var(--accent-bg)',
+                        }
+                      }}>
                       <ListItemText 
-                        primary={`${cidade.name}, ${cidade.admin1 || ''}`} 
-                        secondary={cidade.country} 
+                        disableTypography 
+                        
+                        primary={
+                          <div style={{ color: 'var(--text-h)', fontSize: '1rem' }}>
+                            {`${cidade.name}, ${cidade.admin1 || ''}`}
+                          </div>
+                        }
+                        secondary={
+                          <div style={{ color: 'var(--text)', fontSize: '0.875rem', marginTop: '4px' }}>
+                            {cidade.country}
+                          </div>
+                        } 
                       />
                     </ListItemButton>
                   </ListItem>
