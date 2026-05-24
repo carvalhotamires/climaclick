@@ -22,10 +22,7 @@ import WeatherCard from '../components/common/WeatherCard';
 
 import { weatherCodeLabel, weatherCodeIcon } from '../services/api'; 
 
-import { useTheme } from '@mui/material/styles';
-
 const Home: React.FC = () => {
-  const theme = useTheme();
 
   const {
     query,
