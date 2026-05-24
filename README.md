@@ -39,7 +39,7 @@ O deploy foi realizado na plataforma Vercel. Você pode testar a aplicação com
 ---
 
 ## 🗺️ Rotas da aplicação
-- `/` — Home
+- `/home` — Home
 - `/favorites` — Favoritos
 - `/about` — Sobre
 
@@ -67,6 +67,9 @@ O deploy foi realizado na plataforma Vercel. Você pode testar a aplicação com
 src/
 - assets/
 - components/
+- common/
+- layout/
+- ui/
 - context/
 - hooks/
 - pages/
