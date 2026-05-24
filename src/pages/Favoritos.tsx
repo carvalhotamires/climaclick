@@ -23,6 +23,10 @@ export default function Favoritos() {
           <Card
             key={city.name}
             sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              textAlign: 'center',
               borderRadius: 3,
               boxShadow: 3,
               backgroundColor: 'var(--code-bg)',
