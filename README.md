@@ -21,7 +21,7 @@ O deploy foi realizado na plataforma Vercel. Você pode testar a aplicação com
 
 ## ✅ Requisitos atendidos (check rápido)
 - **Componentização:** componentes reutilizáveis com props + biblioteca de UI
-- **Rotas:** Home / Detalhes / Favoritos / Sobre
+- **Rotas:** Home / Favoritos / Sobre
 - **Hooks:** useState / useEffect (e hooks utilitários se houver)
 - **Consumo de API:** Open‑Meteo (Geocoding + Forecast)
 - **Tratamento de estados:** loading, erro e dados inexistentes
@@ -33,7 +33,6 @@ O deploy foi realizado na plataforma Vercel. Você pode testar a aplicação com
 ## 🧩 Funcionalidades
 - Busca de cidades (Geocoding)
 - Exibição do clima atual e previsão
-- Tela de detalhes com informações avançadas
 - Favoritar/desfavoritar cidades (persistência no navegador)
 - Estados de loading, erro e “nenhum resultado”
 
@@ -41,7 +40,6 @@ O deploy foi realizado na plataforma Vercel. Você pode testar a aplicação com
 
 ## 🗺️ Rotas da aplicação
 - `/` — Home
-- `/city/:idOuNome` — Detalhes
 - `/favorites` — Favoritos
 - `/about` — Sobre
 
