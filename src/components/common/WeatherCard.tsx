@@ -32,6 +32,11 @@ export default function WeatherCard({
   return (
     <Card
       sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: { xs: 'center', sm: 'center' },
+        textAlign: { xs: 'center', sm: 'center' },
+        gap: 1,
         borderRadius: 3,
         boxShadow: 3,
         mt: 2,
